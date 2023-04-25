@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "Price Crawler",
+    "slug": "price-crawler",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#5893D4"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -17,13 +17,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "userInterfaceStyle": "automatic",
+      "bundleIdentifier": "com.fdc2001.pricecrawler"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "userInterfaceStyle": "automatic",
+      "package": "com.fdc2001.pricecrawler"
     },
     "web": {
       "favicon": "./assets/favicon.png"

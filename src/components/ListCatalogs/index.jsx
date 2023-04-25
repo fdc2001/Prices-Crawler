@@ -1,18 +1,19 @@
-import {Collapse,CollapseHeader, CollapseBody, AccordionList} from 'accordion-collapse-react-native';
-import {View, Text, HStack, Box, AspectRatio, Center, Stack, Heading} from "native-base";
-import {Dimensions} from "react-native";
+import {Collapse, CollapseBody, CollapseHeader} from 'accordion-collapse-react-native';
+import {Box, Heading, Stack} from "native-base";
+import {Dimensions, FlatList} from "react-native";
 import {memo} from "react";
-function ListItems({row={}}) {
-    //console.log(row)
+import ListItems from "../ListItems";
+
+function ListCatalogs({row={},navigation, catalog, locale, idx}) {
     if (row.catalog===undefined){
         return (
             <></>
         )
     }
     return (
-        <Collapse>
+        <Collapse isExpanded={idx===0}>
             <CollapseHeader>
-                <Box w={Dimensions.get('window').width-20}>
+                <Box w={Dimensions.get('window').width*0.90}>
                     <Box w="100%" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
                         borderColor: "coolGray.600",
                         backgroundColor: "gray.700"
@@ -33,10 +34,22 @@ function ListItems({row={}}) {
                 </Box>
             </CollapseHeader>
             <CollapseBody>
-                <Text>Ta daa!</Text>
+                <FlatList
+                    horizontal={true}
+                    data={row.products}
+                    initialNumToRender={4}
+                    maxToRenderPerBatch={4}
+                    snapToStart
+                    contentContainerStyle={{paddingTop:10}}
+                    keyExtractor={item=>item.id}
+                    renderItem={({item})=><ListItems row={item} navigation={navigation} locale={locale} catalog={catalog}/> }
+                    showsHorizontalScrollIndicator={false}
+                    collapsable={true}
+
+                />
             </CollapseBody>
         </Collapse>
     )
 }
 
-export default ListItems
+export default memo(ListCatalogs)

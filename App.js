@@ -7,10 +7,14 @@ import {NavigationContainer,  DefaultTheme, DarkTheme,} from "@react-navigation/
 import StackNavigation from "./src/Navigation/StackNavigation";
 import i18n from "./src/services/i18n/index.js";
 import {useColorScheme} from "react-native";
-// Define the config
 
+import * as Sentry from '@sentry/react-native';
 
-// extend the theme
+Sentry.init({ 
+    dsn: 'https://eda7cc03a4c442218c62c16483a268cd@o4505074005901312.ingest.sentry.io/4505074006884352',
+    enableNative: false,
+});
+
 export const theme = extendTheme({
     config:{
         useSystemColorMode: true,
@@ -18,7 +22,7 @@ export const theme = extendTheme({
     }
 });
 
-export default function App() {
+function App() {
   const scheme = useColorScheme();
 
   return (
@@ -29,5 +33,7 @@ export default function App() {
     </NativeBaseProvider>
   );
 }
+
+export default Sentry.wrap(App);
 
 // Color Switch Component

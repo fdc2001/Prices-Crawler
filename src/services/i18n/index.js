@@ -16,6 +16,7 @@ i18n
         interpolation: {
             escapeValue: false
         },
+        compatibilityJSON: 'v2',
         keySeparator:'.',
         whitelist: ['en-GB', 'pt-PT'],
         debug: false,
